@@ -1,0 +1,96 @@
+// determines the location of the Android SDK, using a key from
+// local.properties. If this file does not exist, an attempt is made to
+// infer the location and stored in the local.properties file for future use
+// (and easy modification, if the inferred value is wrong).
+def androidSdkDir = {
+    def localPropertiesFile = file(new File(projectDir, "local.properties"))
+
+    if (!localPropertiesFile.exists()) {
+        throw new GradleException("local.properties file missing")
+    }
+
+    def props = new Properties()
+    localPropertiesFile.withInputStream { props.load(it) }
+    def sdkDir = props.get("sdk.dir")
+    if (sdkDir == null) {
+        throw new GradleException("sdk.dir not defined in local.properties")
+    }
+    return sdkDir
+}
+
+buildscript {
+    // workaround for the Android plugin thinking that gradle 2.11 is less
+    // up-to-date than gradle 2.2:
+    // https://discuss.gradle.org/t/gradle-thinks-2-10-is-less-than-2-2-when-resolving-plugins
+    System.properties['com.android.build.gradle.overrideVersionCheck'] = 'true'
+
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.5.0'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+
+        maven {
+          url "${androidSdkDir()}/extras/android/m2repository"
+          url 'http://dl.bintray.com/openid/net.openid'
+        }
+    }
+}
+
+apply plugin: 'com.android.application'
+
+dependencies {
+    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'com.android.support:design:23.2.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'org.apmem.tools:layouts:1.10@aar'
+    compile 'net.openid:appauth:0.1'
+}
+
+android {
+    signingConfigs {
+        debugAndRelease {
+            keyAlias 'appauth'
+            keyPassword 'appauth'
+            storeFile file('appauth.keystore')
+            storePassword 'appauth'
+        }
+    }
+    compileSdkVersion 23
+    buildToolsVersion '23.0.2'
+    sourceSets {
+        main.manifest.srcFile 'AndroidManifest.xml'
+        main.java.srcDirs = ['src']
+        main.aidl.srcDirs = ['src']
+        main.res.srcDir 'res'
+        main.assets.srcDir 'assets'
+        main.resources.srcDir 'src'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debugAndRelease
+        }
+        debug {
+            signingConfig signingConfigs.debugAndRelease
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+    lintOptions {
+        warningsAsErrors true
+        disable 'PrivateResource'
+    }
+}

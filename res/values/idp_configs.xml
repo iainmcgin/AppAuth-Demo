@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+    This contains the OAuth2 configuration details that are used for demonstrating
+    authentication with IDPs. By default, all providers are disabled until you modify this file
+    to provide your own configuration details.
+
+    NOTE: under normal circumstances, it is not recommended to include client secrets into your
+    apps. This allows others to easily impersonate your service during authorization requests,
+    and if the user has already consented to a set of scopes requested on the device in question,
+    malicious apps may be able to freely acquire tokens for the user. Client secrets are not
+    strictly required for OAuth2 to function securely; best practice for OAuth2 on mobile devices
+    is currently not to use client secrets, but many IDPs still require them to acquire refresh
+    tokens, which are essential to a good user experience in mobile apps.
+    -->
+    <eat-comment/>
+
+    <bool name="google_enabled">true</bool>
+    <string name="google_client_id" translatable="false">533526602309-6g5u7a7gk5gaevtei81mt8c5aokbeklv.apps.googleusercontent.com</string>
+    <!--
+    NOTE: this "special" scheme, which is the reverse form of the client ID registered above, is
+    permitted automatically by Google for client IDs registered with the "Android" type.
+    -->
+    <string name="google_auth_redirect_uri" translatable="false">com.googleusercontent.apps.533526602309-6g5u7a7gk5gaevtei81mt8c5aokbeklv:/oauth2redirect</string>
+
+    <bool name="facebook_enabled" translatable="false">true</bool>
+    <string name="facebook_client_id" translatable="false">1493898367579297</string>
+    <string name="facebook_client_secret" translatable="false">c29fdd53c851356337d1bcc3139b5e27</string>
+
+    <bool name="microsoft_enabled">true</bool>
+    <string name="microsoft_client_id">fb7f3460-68b6-48f9-a272-71e1ebf39cd2</string>
+    <string name="microsoft_client_secret" translatable="false">tJA4kMt79nbXHiJ8DUywQvV</string>
+
+    <bool name="github_enabled" translatable="false">true</bool>
+    <string name="github_client_id">30890f8e4ae2a189c94f</string>
+    <string name="github_client_secret" translatable="false">02f23ebb9de764cbbfda9aeb8c0ebfdece534cf8</string>
+</resources>

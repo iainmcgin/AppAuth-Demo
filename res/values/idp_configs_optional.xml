@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+    This file contains the OAuth2 configuration details that do not typically need to be changed
+    for the demo app to correctly interact with each IDP.
+    -->
+    <eat-comment/>
+
+    <string name="google_name">Google</string>
+    <string name="google_discovery_uri" translatable="false">https://accounts.google.com/.well-known/openid-configuration</string>
+    <string name="google_scope_string" translatable="false">openid profile email</string>
+
+    <string name="facebook_name">Facebook</string>
+    <string name="facebook_auth_endpoint" translatable="false">https://www.facebook.com/dialog/oauth</string>
+    <string name="facebook_token_endpoint" translatable="false">"https://graph.facebook.com/v2.5/oauth/access_token"</string>
+    <string name="facebook_auth_redirect_uri" translatable="false">https://appauth.demo-app.io/oauth2redirect</string>
+    <string name="facebook_scope_string" translatable="false">public_profile</string>
+
+    <string name="microsoft_name">Microsoft</string>
+    <string name="microsoft_discovery_uri" translatable="false">https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration</string>
+    <string name="microsoft_auth_redirect_uri" translatable="false">https://appauth.demo-app.io/oauth2redirect</string>
+    <string name="microsoft_scope_string">openid profile email offline_access</string>
+
+    <string name="github_name">Github</string>
+    <string name="github_auth_endpoint" translatable="false">https://github.com/login/oauth/authorize</string>
+    <string name="github_token_endpoint" translatable="false">https://github.com/login/oauth/access_token</string>
+    <string name="github_auth_redirect_uri" translatable="false">https://appauth.demo-app.io/oauth2redirect</string>
+
+    <!--
+    NOTE: github uses commas rather than spaces to separate scopes (not spec compliant). See:
+    https://developer.github.com/v3/oauth/#scopes
+    -->
+    <string name="github_scope_string" translatable="false">offline_access</string>
+</resources>
