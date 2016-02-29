@@ -41,7 +41,6 @@ allprojects {
 
         maven {
           url "${androidSdkDir()}/extras/android/m2repository"
-          url 'http://dl.bintray.com/openid/net.openid'
         }
     }
 }
@@ -53,7 +52,7 @@ dependencies {
     compile 'com.android.support:design:23.2.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'org.apmem.tools:layouts:1.10@aar'
-    compile 'net.openid:appauth:0.1'
+    compile 'net.openid:appauth:0.1.1'
 }
 
 android {
