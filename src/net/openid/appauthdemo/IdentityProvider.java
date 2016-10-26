@@ -273,7 +273,7 @@ class IdentityProvider {
             AuthorizationServiceConfiguration.fetchFromUrl(mDiscoveryEndpoint, callback);
         } else {
             AuthorizationServiceConfiguration config =
-                    new AuthorizationServiceConfiguration(mAuthEndpoint, mTokenEndpoint);
+                    new AuthorizationServiceConfiguration(mAuthEndpoint, mTokenEndpoint, null);
             callback.onFetchConfigurationCompleted(config, null);
         }
     }

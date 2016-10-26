@@ -92,7 +92,7 @@ public class TokenActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             if (savedInstanceState.containsKey(KEY_AUTH_STATE)) {
                 try {
-                    mAuthState = AuthState.fromJson(savedInstanceState.getString(KEY_AUTH_STATE));
+                    mAuthState = AuthState.jsonDeserialize(savedInstanceState.getString(KEY_AUTH_STATE));
                 } catch (JSONException ex) {
                     Log.e(TAG, "Malformed authorization JSON saved", ex);
                 }
@@ -129,7 +129,7 @@ public class TokenActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle state) {
         String authorizationStr = null;
         if (mAuthState != null) {
-            state.putString(KEY_AUTH_STATE, mAuthState.toJsonString());
+            state.putString(KEY_AUTH_STATE, mAuthState.jsonSerializeString());
         }
 
         if (mUserInfoJson != null) {
