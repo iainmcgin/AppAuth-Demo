@@ -12,13 +12,13 @@
  * limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="net.openid.appauthdemo"
+    package="net.openid.appauthdemo.moreidps"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
             android:minSdkVersion="16"
-            android:targetSdkVersion="23" />
+            android:targetSdkVersion="25" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 

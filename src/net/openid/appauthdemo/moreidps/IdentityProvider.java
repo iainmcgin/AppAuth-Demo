@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package net.openid.appauthdemo;
+package net.openid.appauthdemo.moreidps;
 
 import android.content.Context;
 import android.content.res.Resources;

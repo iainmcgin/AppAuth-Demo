@@ -15,4 +15,4 @@
 /**
  * App which demonstrates the use of the AppAuth library to authenticate a Google account.
  */
-package net.openid.appauthdemo;
+package net.openid.appauthdemo.moreidps;

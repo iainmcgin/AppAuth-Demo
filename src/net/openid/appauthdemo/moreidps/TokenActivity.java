@@ -12,7 +12,7 @@
  * limitations under the License.
  */
 
-package net.openid.appauthdemo;
+package net.openid.appauthdemo.moreidps;
 
 import android.app.PendingIntent;
 import android.content.Context;
@@ -46,7 +46,6 @@ import net.openid.appauth.AuthorizationRequest;
 import net.openid.appauth.AuthorizationResponse;
 import net.openid.appauth.AuthorizationService;
 import net.openid.appauth.AuthorizationServiceDiscovery;
-import net.openid.appauth.RedirectUriReceiverActivity;
 import net.openid.appauth.TokenRequest;
 import net.openid.appauth.TokenResponse;
 
@@ -65,7 +64,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 /**
- * A sample activity to serve as a client to the Native Oauth library.
+ * Handles token exchange after user authorization.
  */
 public class TokenActivity extends AppCompatActivity {
     private static final String TAG = "TokenActivity";
@@ -92,7 +91,8 @@ public class TokenActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             if (savedInstanceState.containsKey(KEY_AUTH_STATE)) {
                 try {
-                    mAuthState = AuthState.jsonDeserialize(savedInstanceState.getString(KEY_AUTH_STATE));
+                    mAuthState = AuthState.jsonDeserialize(
+                        savedInstanceState.getString(KEY_AUTH_STATE));
                 } catch (JSONException ex) {
                     Log.e(TAG, "Malformed authorization JSON saved", ex);
                 }
@@ -127,7 +127,6 @@ public class TokenActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle state) {
-        String authorizationStr = null;
         if (mAuthState != null) {
             state.putString(KEY_AUTH_STATE, mAuthState.jsonSerializeString());
         }
@@ -229,7 +228,8 @@ public class TokenActivity extends AppCompatActivity {
                 if (mUserInfoJson.has("name")) {
                     name = mUserInfoJson.getString("name");
                 }
-                final TextView userHeader = ((TextView) findViewById(R.id.userinfo_name));
+                final TextView userHeader = ((TextView) findViewById(
+                    R.id.userinfo_name));
                 userHeader.setText(name);
 
                 if (mUserInfoJson.has("picture")) {
@@ -242,7 +242,8 @@ public class TokenActivity extends AppCompatActivity {
                             .into(new UserProfilePictureTarget());
                 }
 
-                ((TextView) findViewById(R.id.userinfo_json)).setText(mUserInfoJson.toString(2));
+                ((TextView) findViewById(R.id.userinfo_json))
+                    .setText(mUserInfoJson.toString(2));
 
                 userInfoCard.setVisibility(View.VISIBLE);
             } catch (JSONException ex) {
