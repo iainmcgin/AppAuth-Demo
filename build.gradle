@@ -1,52 +1,31 @@
-// determines the location of the Android SDK, using a key from
-// local.properties. If this file does not exist, an attempt is made to
-// infer the location and stored in the local.properties file for future use
-// (and easy modification, if the inferred value is wrong).
-def androidSdkDir = {
-    def localPropertiesFile = file(new File(projectDir, "local.properties"))
-
-    if (!localPropertiesFile.exists()) {
-        throw new GradleException("local.properties file missing")
-    }
-
-    def props = new Properties()
-    localPropertiesFile.withInputStream { props.load(it) }
-    def sdkDir = props.get("sdk.dir")
-    if (sdkDir == null) {
-        throw new GradleException("sdk.dir not defined in local.properties")
-    }
-    return sdkDir
-}
-
 buildscript {
     repositories {
         jcenter()
+        google()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.1'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath 'com.android.tools.build:gradle:3.0.0-rc2'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.0'
     }
 }
 
 allprojects {
     repositories {
         jcenter()
-
-        maven {
-          url "${androidSdkDir()}/extras/android/m2repository"
-        }
+        google()
     }
 }
 
 apply plugin: 'com.android.application'
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'org.apmem.tools:layouts:1.10@aar'
-    compile 'net.openid:appauth:0.7.0'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:customtabs:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'org.apmem.tools:layouts:1.10@aar'
+    implementation 'net.openid:appauth:0.7.0'
 }
 
 android {
@@ -55,6 +34,7 @@ android {
                 'appAuthRedirectScheme': 'com.googleusercontent.apps.533526602309-6g5u7a7gk5gaevtei81mt8c5aokbeklv'
         ]
     }
+
     signingConfigs {
         debugAndRelease {
             keyAlias 'appauth'
@@ -63,8 +43,10 @@ android {
             storePassword 'appauth'
         }
     }
-    compileSdkVersion 25
-    buildToolsVersion '25.0.2'
+
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
+
     sourceSets {
         main.manifest.srcFile 'AndroidManifest.xml'
         main.java.srcDirs = ['src']
@@ -73,6 +55,12 @@ android {
         main.assets.srcDir 'assets'
         main.resources.srcDir 'src'
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -83,10 +71,12 @@ android {
             signingConfig signingConfigs.debugAndRelease
         }
     }
+
     packagingOptions {
         exclude 'META-INF/LICENSE.txt'
         exclude 'META-INF/NOTICE.txt'
     }
+
     lintOptions {
         warningsAsErrors true
         disable 'PrivateResource'

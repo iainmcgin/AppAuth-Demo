@@ -29,6 +29,7 @@ import net.openid.appauth.AuthorizationException;
 import net.openid.appauth.AuthorizationRequest;
 import net.openid.appauth.AuthorizationService;
 import net.openid.appauth.AuthorizationServiceConfiguration;
+import net.openid.appauth.ResponseTypeValues;
 
 import java.util.List;
 
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
         AuthorizationRequest authRequest = new AuthorizationRequest.Builder(
                 serviceConfig,
                 idp.getClientId(),
-                "code",
+                ResponseTypeValues.CODE,
                 idp.getRedirectUri())
                 .setScope(idp.getScope())
                 .build();
