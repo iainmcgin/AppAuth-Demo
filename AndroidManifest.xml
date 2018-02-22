@@ -43,6 +43,7 @@
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data android:scheme="net.openid.appauth.demo"/>
                 <data android:scheme="com.googleusercontent.apps.533526602309-6g5u7a7gk5gaevtei81mt8c5aokbeklv"/>
+                <data android:scheme="msalfb7f3460-68b6-48f9-a272-71e1ebf39cd2"/>
             </intent-filter>
 
             <!--

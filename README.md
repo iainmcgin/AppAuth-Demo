@@ -8,17 +8,17 @@ For further explanation, read the section on "Why is this app bad?" below.
 This app demonstrate the use of the
 [AppAuth for Android](https://github.com/openid/AppAuth-Android/)
 library to interact with four identity providers (IDPs): Facebook, GitHub,
-Google and Microsoft. While Google supports the current best-practices for
+Google and Microsoft. While Google and Microsoft support the current best-practices for
 OAuth2 from mobile devices (specifically, public clients and PKCE), the other
 providers do not:
 
-- All require the use of client secrets in order
+- Github and Facebook require the use of client secrets in order
   to acquire a refresh token. The use of the implicit flow to acquire
   short lived access tokens is generally unacceptable for mobile apps, as
   frequent usage of custom tabs to acquire new access tokens will disrupt the
   user experience.
 
-- All require that the redirect URI be an https URL. Prior to Android M, this
+- Github and Facebook require that the redirect URI be an https URL. Prior to Android M, this
   would require the use of an "interstitial" web page to be used that could
   collect the response of the authorization request and forward it to the
   app via a custom scheme URI. With Android M and above this is less of an
@@ -58,7 +58,7 @@ This app is a good example of what *not* to do when using AppAuth for Android:
 
 *DO NOT DO ANY OF THESE* in your own apps. As things stand at the time of
 writing, one should not use AppAuth for Android to integrate _directly_ with
-Facebook, GitHub or Microsoft. Once these providers support the recommendations
+Facebook or GitHub. Once these providers support the recommendations
 of [OAuth 2.0 for Native Apps](https://tools.ietf.org/html/draft-wdenniss-oauth-native-apps)
 then that will change.
 

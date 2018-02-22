@@ -23,15 +23,15 @@
     -->
     <string name="google_auth_redirect_uri" translatable="false">com.googleusercontent.apps.533526602309-6g5u7a7gk5gaevtei81mt8c5aokbeklv:/oauth2redirect</string>
 
-    <bool name="facebook_enabled" translatable="false">true</bool>
+    <bool name="facebook_enabled">true</bool>
     <string name="facebook_client_id" translatable="false">1493898367579297</string>
     <string name="facebook_client_secret" translatable="false">c29fdd53c851356337d1bcc3139b5e27</string>
 
     <bool name="microsoft_enabled">true</bool>
-    <string name="microsoft_client_id">fb7f3460-68b6-48f9-a272-71e1ebf39cd2</string>
-    <string name="microsoft_client_secret" translatable="false">tJA4kMt79nbXHiJ8DUywQvV</string>
+    <string name="microsoft_client_id" translatable="false">fb7f3460-68b6-48f9-a272-71e1ebf39cd2</string>
+    <string name="microsoft_auth_redirect_uri" translatable="false">msalfb7f3460-68b6-48f9-a272-71e1ebf39cd2://auth</string>
 
-    <bool name="github_enabled" translatable="false">true</bool>
-    <string name="github_client_id">30890f8e4ae2a189c94f</string>
+    <bool name="github_enabled">true</bool>
+    <string name="github_client_id" translatable="false">30890f8e4ae2a189c94f</string>
     <string name="github_client_secret" translatable="false">02f23ebb9de764cbbfda9aeb8c0ebfdece534cf8</string>
 </resources>

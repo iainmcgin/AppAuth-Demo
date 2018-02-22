@@ -18,8 +18,7 @@
 
     <string name="microsoft_name">Microsoft</string>
     <string name="microsoft_discovery_uri" translatable="false">https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration</string>
-    <string name="microsoft_auth_redirect_uri" translatable="false">https://appauth.demo-app.io/oauth2redirect</string>
-    <string name="microsoft_scope_string">openid profile email offline_access</string>
+    <string name="microsoft_scope_string" translatable="false">openid profile email offline_access</string>
 
     <string name="github_name">Github</string>
     <string name="github_auth_endpoint" translatable="false">https://github.com/login/oauth/authorize</string>

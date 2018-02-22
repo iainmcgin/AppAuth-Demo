@@ -86,7 +86,7 @@ class IdentityProvider {
             NOT_SPECIFIED,
             NOT_SPECIFIED,
             R.string.microsoft_client_id,
-            R.string.microsoft_client_secret,
+            NOT_SPECIFIED, // client secret is not required for Microsoft
             R.string.microsoft_auth_redirect_uri,
             R.string.microsoft_scope_string,
             R.drawable.btn_microsoft,
